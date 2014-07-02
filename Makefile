@@ -1,13 +1,16 @@
-CFLAGS=-O2 #-Wall -Werror -g3 -O2
+CFLAGS=-g3 #-Wall -Werror
 CC=gcc
 OUT=libdbm.so
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $<
+%.o: src/%.c
+	$(CC) $(CFLAGS) -fPIC -c $<
 
-all: dbm.o
-	$(CC) $(CFLAGS) -shared -o $(OUT) $^
+all: example.o libdbm.so
+	$(CC) $(CFLAGS) -L./ -o example example.o -ldbm
+
+libdbm.so: dbm.o
+	$(CC) $(CFLAGS) -fPIC -shared -o $(OUT) $^
 
 clean:
-	rm *.so
 	rm *.o
+	rm *.so

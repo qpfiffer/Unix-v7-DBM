@@ -12,11 +12,11 @@ char *file;
 
 	strcpy(pagbuf, file);
 	strcat(pagbuf, ".pag");
-	pagf = open(pagbuf, 2);
+	pagf = open(pagbuf, O_CREAT, S_IRUSR | S_IWUSR);
 
 	strcpy(pagbuf, file);
 	strcat(pagbuf, ".dir");
-	dirf = open(pagbuf, 2);
+	dirf = open(pagbuf, O_CREAT, S_IRUSR | S_IWUSR);
 	if(pagf < 0 || dirf < 0) {
 		printf("cannot open database %s\n", file);
 		return(-1);

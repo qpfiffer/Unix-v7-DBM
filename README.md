@@ -11,3 +11,10 @@ Compilation
 ```Bash
 make
 ````
+
+This will compile both `libdbm.so` and the `example` binary. You can test out
+the example with:
+
+```Bash
+LD_LIBRARY_PATH=./ ./example
+````
