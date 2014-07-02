@@ -14,3 +14,4 @@ libdbm.so: dbm.o
 clean:
 	rm *.o
 	rm *.so
+	rm example
